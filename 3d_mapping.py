@@ -27,7 +27,7 @@ def convert_to_set(file_name=None, data_in=None, num_vars=None):
         num_dims = len(data_in[0])
         # num_vars = 3 # TODO: erm... how are we calculating this I'll take it in for now?
 
-    return (add_set_card(data, num_dims, num_vars), num_dims, num_vars)
+    return (add_set_card(data, num_dims, num_vars), num_dims, num_vars+1)
 
 
 def add_set_card(data, num_dims, num_vars):
