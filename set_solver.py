@@ -57,18 +57,25 @@ def find_sets(k, v, board):
     # For each almost_set, see if we have that card
     for a in almost_sets:
         last = last_card(k, v, a)
+
+        # If this almost-set can't be a valid set
         if last is None:
             continue
-        if last in hash_board:
-            found.append(a + (last))
+
+        # Avoid double-counting permutations
+        elif not all([c < last for c in a]):
+            continue
+
+        # Do we have the last card?
+        elif last in hash_board:
+            found.append(a + (last,))
 
     return found
 
 
 if __name__ == "__main__":
-
-    k = 4
-    v = 3
+    k = 3
+    v = 4
 
     board = random_board(k, v, 12)
     # board = [(1, 3, 3), (2, 2, 2), (3, 0, 1)]
