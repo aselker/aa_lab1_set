@@ -22,5 +22,34 @@ def random_board(k, v, n):
     return random.sample(deck, n)
 
 
+def last_card(k, v, cards):
+    """
+    Given v-1 cards, what last card (if any) would make a valid set?
+    """
+
+    assert len(cards) == v - 1
+
+    new_card = [None for _ in range(k)]
+    for i in range(k):
+        values = set((card[i] for card in cards))
+        if len(values) == 1:
+            new_card[i] = cards[0][i]
+        elif len(values) == v - 1:
+            for j in range(v):
+                if j not in values:
+                    new_card[i] = j
+                    break
+        else:
+            return None  # These cards can't form a valid set
+
+    return new_card
+
+
 if __name__ == "__main__":
-    print(random_board(4, 3, 12))
+
+    k = 4
+    v = 3
+
+    board = random_board(k, v, v - 1)
+    print(board)
+    print(last_card(k, v, board))
