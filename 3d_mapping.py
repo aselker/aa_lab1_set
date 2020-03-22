@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import sys
 from read_input import read_input
 from set_solver import find_sets
 
@@ -27,7 +28,7 @@ def convert_to_set(file_name=None, data_in=None, num_vars=None):
         num_dims = len(data_in[0])
         # num_vars = 3 # TODO: erm... how are we calculating this I'll take it in for now?
 
-    return (add_set_card(data, num_dims, num_vars), num_dims, num_vars+1)
+    return (add_set_card(data, num_dims, num_vars), num_dims, num_vars + 1)
 
 
 def add_set_card(data, num_dims, num_vars):
@@ -48,12 +49,17 @@ def add_set_card(data, num_dims, num_vars):
 
 
 if __name__ == "__main__":
-    files = ["3d_mappingtest.txt"]
+    files = sys.argv[1:]
     for file in files:
-        print(f'File name: {file}')
+        print(f"File name: {file}")
         (set_out, num_dims, num_vars) = convert_to_set(file)
-        print(f'Converted to set format we get: {set_out}')
+        print(f"Converted to set format we get: {set_out}")
         output = find_sets(num_dims, num_vars, set_out)
-        print(f'A final matched set is: {output[0][:-1]}')
-        all_sets = [x[:-1] for x in output]
-        print(f'All possible matched sets are: {all_sets}')
+        if output:
+            print(f"A final matched set is: {output[0][:-1]}")
+            all_sets = [x[:-1] for x in output]
+            print(f"All possible matched sets are: {all_sets}")
+        else:
+            print("No matchings found.")
+
+        print("")  # Line break
