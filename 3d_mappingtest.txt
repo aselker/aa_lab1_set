@@ -1,5 +1,5 @@
-c The example on wikipedia
+c The example on wikipedia (slightly edited for out version of the problem)
 p 3 3
-1 2 2
-2 1 1
-3 2 3
+0 1 1
+1 0 0
+2 2 2
