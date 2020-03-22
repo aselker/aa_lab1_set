@@ -42,14 +42,44 @@ def last_card(k, v, cards):
         else:
             return None  # These cards can't form a valid set
 
-    return new_card
+    return tuple(new_card)
+
+
+def find_sets(k, v, board):
+    found = []
+
+    # Make a hashmap version of board for quicker searching
+    hash_board = {card: None for card in board}
+
+    # For each set of v-1 cards, find what card (if any) would make a valid set
+    almost_sets = list(itertools.combinations(board, v - 1))
+
+    # For each almost_set, see if we have that card
+    for a in almost_sets:
+        last = last_card(k, v, a)
+
+        # If this almost-set can't be a valid set
+        if last is None:
+            continue
+
+        # Avoid double-counting permutations
+        elif not all([c < last for c in a]):
+            continue
+
+        # Do we have the last card?
+        elif last in hash_board:
+            found.append(a + (last,))
+
+    return found
 
 
 if __name__ == "__main__":
+    k = 3
+    v = 4
 
-    k = 4
-    v = 3
+    board = random_board(k, v, 12)
+    # board = [(1, 3, 3), (2, 2, 2), (3, 0, 1)]
 
-    board = random_board(k, v, v - 1)
     print(board)
-    print(last_card(k, v, board))
+    # print(last_card(k, v, board))
+    print(find_sets(k, v, board))
