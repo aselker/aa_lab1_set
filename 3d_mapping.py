@@ -21,7 +21,7 @@ def convert_to_set(file_name=None, data_in=None, num_vars=None):
     # What this does is compensate for beign able to have sets with an overlapping val if all are the same
     if file_name:
         (data, _, num_dims, num_vars) = read_input(file)
-        print(data)
+        # print(data)
     else:
         data = data_in
         num_dims = len(data_in[0])
@@ -52,6 +52,8 @@ if __name__ == "__main__":
     for file in files:
         print(f'File name: {file}')
         (set_out, num_dims, num_vars) = convert_to_set(file)
-        print(set_out)
+        print(f'Converted to set format we get: {set_out}')
         output = find_sets(num_dims, num_vars, set_out)
-        print(output)
+        print(f'A final matched set is: {output[0][:-1]}')
+        all_sets = [x[:-1] for x in output]
+        print(f'All possible matched sets are: {all_sets}')

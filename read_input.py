@@ -24,7 +24,7 @@ def read_input(file):
             cleaned_input.append(tuple([int(x) for x in stripped.split()]))
 
     num_cards = len(cleaned_input)
-    print(cleaned_input)
+    print(f'input read in is: {cleaned_input}')
     print(f'num_vars is: {num_vars}')
     print(f'num_dims is: {num_dims}')
     return (cleaned_input, num_cards, num_dims, num_vars)
