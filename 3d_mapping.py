@@ -1,6 +1,5 @@
 from read_input import read_input
 
-
 def convert_to_set(file_name=None, data_in=None, num_vars=None):
     """Function to convert a 3 dimensional mapping problem to a set problem.
 
@@ -26,7 +25,6 @@ def convert_to_set(file_name=None, data_in=None, num_vars=None):
 
     return add_set_card(data, num_dims, num_vars)
 
-
 def add_set_card(data, num_dims, num_vars):
     """Function that adds the additional card to the data to convert.
 
@@ -39,14 +37,13 @@ def add_set_card(data, num_dims, num_vars):
     list with the augmented card
 
     """
-    new_card = [num_vars] * num_dims
+    new_card = [num_vars]*num_dims
     data.append(tuple(new_card))
     return data
 
-
 if __name__ == "__main__":
-    files = ["test_3dmapping.txt"]
+    files = ["3d_mappingtest.txt"]
     for file in files:
-        print(f"File name: {file}")
+        print(f'File name: {file}')
         set_out = convert_to_set(file)
         print(set_out)

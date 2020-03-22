@@ -1,4 +1,4 @@
-c Problem 2's conversion
+c Test of all 81 cards in set
 p 4 3
 0 0 0 0
 0 0 0 1

@@ -32,7 +32,7 @@ def read_input(file):
 
 
 if __name__ == "__main__":
-    files = ["test_3dmapping.txt"]
+    files = ["3d_mappingtest.txt"]
     for file in files:
         print(f'File name: {file}')
         set_out = read_input(file)
