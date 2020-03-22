@@ -1,4 +1,5 @@
 from read_input import read_input
+from set_solver import find_sets
 
 def convert_to_set(file_name=None, data_in=None, num_vars=None):
     """Function to convert a 3 dimensional mapping problem to a set problem.
@@ -23,7 +24,7 @@ def convert_to_set(file_name=None, data_in=None, num_vars=None):
         num_dims = len(data_in[0])
         # num_vars = 3 # TODO: erm... how are we calculating this I'll take it in for now?
 
-    return add_set_card(data, num_dims, num_vars)
+    return (add_set_card(data, num_dims, num_vars), num_dims, num_vars)
 
 def add_set_card(data, num_dims, num_vars):
     """Function that adds the additional card to the data to convert.
@@ -45,5 +46,7 @@ if __name__ == "__main__":
     files = ["3d_mappingtest.txt"]
     for file in files:
         print(f'File name: {file}')
-        set_out = convert_to_set(file)
+        (set_out, num_dims, num_vars) = convert_to_set(file)
         print(set_out)
+        output = find_sets(num_dims, num_vars, set_out)
+        print(output)
