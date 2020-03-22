@@ -20,6 +20,7 @@ def read_input(file):
             split = stripped.split()
             num_dims = int(split[1])
             num_vars = int(split[2])
+            num_solns = int(split[3])
         else:
             cleaned_input.append(tuple([int(x) for x in stripped.split()]))
 
@@ -27,7 +28,7 @@ def read_input(file):
     print(f'input read in is: {cleaned_input}')
     print(f'num_vars is: {num_vars}')
     print(f'num_dims is: {num_dims}')
-    return (cleaned_input, num_cards, num_dims, num_vars)
+    return (cleaned_input, num_cards, num_dims, num_vars, num_solns)
 
 
 
